@@ -1,19 +1,49 @@
-
-let num1, num2;
+let num1, num2, startTime, endTime;
 let streak = 0;
 let maxStreak = getCookie("maxStreak") ? parseInt(getCookie("maxStreak")) : 0;
 
 function generateQuestion() {
-    num1 = Math.floor(Math.random() * 90) + 10;
-    num2 = Math.floor(Math.random() * 90) + 10;
-    document.getElementById('question').innerText = `${num1} × ${num2} = ?`;
+    const digits = parseInt(document.getElementById('digits').value);
+    const operation = document.getElementById('operation').value;
+
+    num1 = Math.floor(Math.random() * Math.pow(10, digits));
+    num2 = Math.floor(Math.random() * Math.pow(10, digits));
+
+    // Ensure num2 is not zero for division
+    if (operation === "/") {
+        num2 = num2 === 0 ? 1 : num2;
+        // Make num1 a multiple of num2 to ensure integer result
+        num1 = num1 - (num1 % num2);
+    }
+
+    document.getElementById('question').innerText = `${num1} ${operation} ${num2} = ?`;
     document.getElementById('answer').value = '';
     document.getElementById('result').innerText = '';
+    startTime = new Date();
 }
 
 function checkAnswer() {
     const userAnswer = parseInt(document.getElementById('answer').value);
-    const correctAnswer = num1 * num2;
+    const operation = document.getElementById('operation').value;
+    let correctAnswer;
+
+    switch (operation) {
+        case "*":
+            correctAnswer = num1 * num2;
+            break;
+        case "/":
+            correctAnswer = num1 / num2;
+            break;
+        case "+":
+            correctAnswer = num1 + num2;
+            break;
+        case "-":
+            correctAnswer = num1 - num2;
+            break;
+    }
+
+    endTime = new Date();
+    const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
 
     if (userAnswer === correctAnswer) {
         document.getElementById('result').innerText = 'Correct!';
@@ -29,6 +59,7 @@ function checkAnswer() {
         streak = 0;
     }
     updateMaxStreak();
+    document.getElementById('time-taken').innerText = `Time Taken: ${timeTaken} seconds`;
 }
 
 function addToAnswer(num) {
