@@ -10,25 +10,24 @@
     <div class="game-container">
         <h1>Math Game</h1>
         <div>
-            <label for="digits">Number of Digits:</label>
+            <label for="digits">자릿수:</label>
             <select id="digits" onchange="generateQuestion()">
-                <option value="1">1 Digit</option>
-                <option value="2" selected>2 Digits</option>
-                <option value="3">3 Digits</option>
+                <option value="1">1자릿수</option>
+                <option value="2" selected>2자릿수</option>
+                <option value="3">3자릿수</option>
             </select>
         </div>
         <div>
             <label for="operation">Operation:</label>
             <select id="operation" onchange="generateQuestion()">
-                <option value="*">Multiplication</option>
-                <option value="/">Division</option>
-                <option value="+">Addition</option>
-                <option value="-">Subtraction</option>
+                <option value="×">곱하기</option>
+                <option value="÷">나누기</option>
+                <option value="+">더하기</option>
+                <option value="-">빼기</option>
             </select>
         </div>
         <div id="question"></div>
         <div id="keyboard">
-            <!-- Number keys -->
             <button onclick="addToAnswer(1)">1</button>
             <button onclick="addToAnswer(2)">2</button>
             <button onclick="addToAnswer(3)">3</button>
