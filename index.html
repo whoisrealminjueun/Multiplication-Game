@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Multiplication Game</h1>
+        <div id="question"></div>
+        <div id="keyboard">
+            <!-- Number keys -->
+            <button onclick="addToAnswer(1)">1</button>
+            <button onclick="addToAnswer(2)">2</button>
+            <button onclick="addToAnswer(3)">3</button><br>
+            <button onclick="addToAnswer(4)">4</button>
+            <button onclick="addToAnswer(5)">5</button>
+            <button onclick="addToAnswer(6)">6</button><br>
+            <button onclick="addToAnswer(7)">7</button>
+            <button onclick="addToAnswer(8)">8</button>
+            <button onclick="addToAnswer(9)">9</button><br>
+            <button onclick="addToAnswer(0)">0</button>
+            <button onclick="clearAnswer()">C</button>
+        </div>
+        <input type="text" id="answer" placeholder="Enter your answer" readonly>
+        <button onclick="checkAnswer()">Submit</button>
+        <div id="result"></div>
+        <button onclick="generateQuestion()">Next Question</button>
+        <div id="max-streak"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
